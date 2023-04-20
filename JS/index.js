@@ -1,6 +1,4 @@
 let zoomFactor = 1;
-const bar = document.getElementById("my-bar");
-const text = document.getElementById("my-element");
 
 document.addEventListener("wheel", function(event) {
   event.preventDefault(); // Prevents the default scrolling behavior
@@ -15,10 +13,5 @@ document.addEventListener("wheel", function(event) {
   }
 
   // Set the scale transform on the element
-  bar.style.transform = `scaleX(${zoomFactor})`;
-  text.style.transform = `scaleX(${zoomFactor})`;
-});
-
-window.addEventListener("load", function() {
-  bar.style.maxWidth = `${bar.offsetWidth}px`;
+  document.getElementById("my-element").style.transform = `scaleX(${zoomFactor})`;
 });

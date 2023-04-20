@@ -1,3 +1,5 @@
-#my-bar {
-    width: 100%;
-}  
+#my-element {
+  height: 5px; /* change the height to make it thicker */
+  background-color: rgba(95, 245, 8, 0.678); /* change the color to your desired color */
+  border: none; /* remove any default border */
+}
