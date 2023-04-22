@@ -43,18 +43,7 @@ window.addEventListener("keydown", function (e){
   if(e.key == "ArrowRight"){
     xPos += 10
   };
-  if(xPos < 0){
-    myElement.style.right = (-xPos + "%");
-    myElement.style.left = 0;
-  };
-  if(xPos > 0){
-    myElement.style.left = (xPos + "%");
-    myElement.style.right = 0;
-  };
-  if(xPos == 0){
-    myElement.style.right = 0;
-    myElement.style.left = 0;
-  }
+  myElement.style.left = (xPos + "%");
   
   console.log(xPos);
   rect = myElement.getBoundingClientRect();
