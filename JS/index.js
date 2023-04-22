@@ -44,16 +44,16 @@ window.addEventListener("keydown", function (e){
     xPos += 10
   };
   if(xPos < 0){
-    myElement.style.marginRight = (-xPos + "%");
-    myElement.style.marginLeft = 0;
+    myElement.style.right = (-xPos + "%");
+    myElement.style.left = 0;
   };
   if(xPos > 0){
-    myElement.style.marginLeft = (xPos + "%");
-    myElement.style.marginRight = 0;
+    myElement.style.left = (xPos + "%");
+    myElement.style.right = 0;
   };
   if(xPos == 0){
-    myElement.style.marginRight = 0;
-    myElement.style.marginLeft = 0;
+    myElement.style.right = 0;
+    myElement.style.left = 0;
   }
   
   console.log(xPos);
@@ -65,11 +65,14 @@ window.addEventListener("keydown", function (e){
 window.addEventListener("load", function() {
   console.log("Page has finished loading");
   // Do something else here
+  myElement.style.position = "absolute";
   myElement.style.width = scrnWidth;
   console.log(scrnHeight/2);
   myElement.style.marginTop = (scrnHeight/2) + "px";
   myElement.style.marginBottom = 0;
+  myElement.style.margin = "20,20";
   myElement.style.left = (0 + "%");
+  myElement.style.right = (0 + "%");
   myElement.style.top = (0 + "%");
   console.log("Distance from right: " + distanceFromRight);
 });
