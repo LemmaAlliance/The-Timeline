@@ -1,6 +1,7 @@
 body {
     color: chartreuse;
     background-color: black;
+    overflow-x: hidden;
 }
 #topMenu {
     height: 60px;
@@ -49,6 +50,5 @@ body {
   border: none; /* remove any default border */
   left: 0%;
   top: 0%;
-  position: absolute;
 }
   

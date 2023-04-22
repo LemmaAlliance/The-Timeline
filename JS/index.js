@@ -2,6 +2,9 @@ let zoomFactor = 1;
 const scrnWidth = screen.width;
 const scrnHeight = window.innerHeight;
 const myElement = document.getElementById("my-element");
+// get the bounding rectangle of the element relative to the viewport
+let rect = myElement.getBoundingClientRect();
+let distanceFromRight = document.documentElement.clientWidth - rect.right;
 let xPos = 0;
 
 function clamp(min, num){
@@ -38,11 +41,19 @@ window.addEventListener("keydown", function (e){
     xPos += 10
   };
   if(xPos < 0){
-    myElement.style.marginRight = -(xPos + "%");
+    myElement.style.marginRight = (-xPos + "%");
+    myElement.style.marginLeft = 0;
   };
   if(xPos > 0){
     myElement.style.marginLeft = (xPos + "%");
+    myElement.style.marginRight = 0;
   };
+  if(xPos == 0){
+    myElement.style.marginRight = 0;
+    myElement.style.marginLeft = 0;
+  }
+  
+  console.log(xPos);
 }, false);
 
 window.addEventListener("load", function() {
