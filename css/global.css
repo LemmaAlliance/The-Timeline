@@ -48,7 +48,5 @@ body {
   height: 5px;  /*adjust the height of the <hr> element as desired */
   background-color: rgba(0, 255, 13, 0.541); /* change the color to your desired color */
   border: none; /* remove any default border */
-  left: 0%;
-  top: 0%;
 }
   
