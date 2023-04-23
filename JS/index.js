@@ -5,6 +5,9 @@ const myElement = document.getElementById("my-element");
 let rect = myElement.getBoundingClientRect();
 let distanceFromRight = document.documentElement.clientWidth - rect.right;
 let xPos = 0;
+let date1 = new Date("Jan 01 2000 00:00:00");
+let date2 = new Date();
+var dif = Math.abs(date1 - date2) / 1000;
 
 function clamp(min, num){
   if(num < min){
@@ -53,6 +56,10 @@ window.addEventListener("keydown", function (e){
 
 window.addEventListener("load", function() {
   console.log("Page has finished loading");
+
+  console.log("diffrence: " + dif);
+
+
   // Do something else here
   myElement.style.position = "absolute";
   myElement.style.width = scrnWidth;
