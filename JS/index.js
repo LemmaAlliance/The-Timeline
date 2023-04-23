@@ -2,6 +2,7 @@ let zoomFactor = 1;
 const scrnWidth = screen.width;
 const scrnHeight = window.innerHeight;
 const myElement = document.getElementById("my-element");
+const hi = document.getElementById("Hi");
 let rect = myElement.getBoundingClientRect();
 let distanceFromRight = document.documentElement.clientWidth - rect.right;
 let xPos = 0;
@@ -72,6 +73,15 @@ window.addEventListener("load", function() {
   myElement.style.right = (0 + "%");
   myElement.style.top = (0 + "%");
   console.log("Distance from right: " + distanceFromRight);
+
+  hi.style.position = "absolute";
+  hi.style.width = scrnWidth;
+  hi.style.marginTop = (scrnHeight/2)-7 + "px";
+  hi.style.marginBottom = 0;
+  hi.style.margin = "20,20";
+  hi.style.left = (0 + "%");
+  hi.style.right = (0 + "%");
+  hi.style.top = (0 + "%");
 
   pix = (percen/100) * myElement.offsetWidth;
 
