@@ -7,7 +7,11 @@ let distanceFromRight = document.documentElement.clientWidth - rect.right;
 let xPos = 0;
 let date1 = new Date("Jan 01 2000 00:00:00");
 let date2 = new Date();
+let date3 = new Date("Jan 28 2010 00:00:00");
 var dif = Math.abs(date1 - date2) / 1000;
+var dif2 = Math.abs(date1 - date3) / 1000;
+var percen = (((dif2-dif)/dif) * 100) + 100;
+var pix;
 
 function clamp(min, num){
   if(num < min){
@@ -57,9 +61,6 @@ window.addEventListener("keydown", function (e){
 window.addEventListener("load", function() {
   console.log("Page has finished loading");
 
-  console.log("diffrence: " + dif);
-
-
   // Do something else here
   myElement.style.position = "absolute";
   myElement.style.width = scrnWidth;
@@ -71,4 +72,12 @@ window.addEventListener("load", function() {
   myElement.style.right = (0 + "%");
   myElement.style.top = (0 + "%");
   console.log("Distance from right: " + distanceFromRight);
+
+  pix = (percen/100) * myElement.offsetWidth;
+
+  console.log("diffrence: " + dif);
+  console.log("diffrence 2: " + dif2);
+  console.log("percentage: " + percen);
+  console.log("Width" + myElement.offsetWidth);
+  console.log("pixels: " + pix);
 });
