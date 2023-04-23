@@ -1,6 +1,10 @@
 let zoomFactor = 1;
 const scrnWidth = screen.width;
 const scrnHeight = window.innerHeight;
+const myElement = document.getElementById("my-element");
+let rect = myElement.getBoundingClientRect();
+let distanceFromRight = document.documentElement.clientWidth - rect.right;
+let xPos = 0;
 
 function clamp(min, num){
   if(num < min){
@@ -24,13 +28,40 @@ document.addEventListener("wheel", function(event) {
   zoomFactor = clamp(1, zoomFactor);
 
   // Set the scale transform on the element
-  document.getElementById("my-element").style.transform = `scaleX(${zoomFactor})`;
+  myElement.style.transform = `scaleX(${zoomFactor})`;
 }, { passive: false }); // Add the { passive: false } option
+
+window.addEventListener("keydown", function (e){
+  console.log(`You pressed ${e.key}`);
+
+  rect = myElement.getBoundingClientRect();
+  distanceFromRight = document.documentElement.clientWidth - rect.right;
+
+  if(e.key == "ArrowLeft"){
+    xPos += -10
+  };
+  if(e.key == "ArrowRight"){
+    xPos += 10
+  };
+  myElement.style.left = (xPos + "%");
+  
+  console.log(xPos);
+  rect = myElement.getBoundingClientRect();
+  distanceFromRight = document.documentElement.clientWidth - rect.right;
+  console.log("Distance from right" + distanceFromRight)
+}, false);
+
 window.addEventListener("load", function() {
   console.log("Page has finished loading");
   // Do something else here
-  document.getElementById("my-element").style.width = scrnWidth;
+  myElement.style.position = "absolute";
+  myElement.style.width = scrnWidth;
   console.log(scrnHeight/2);
-  document.getElementById("my-element").style.marginTop = (scrnHeight/2) + "px";
-  document.getElementById("my-element").style.marginBottom = 0;
+  myElement.style.marginTop = (scrnHeight/2) + "px";
+  myElement.style.marginBottom = 0;
+  myElement.style.margin = "20,20";
+  myElement.style.left = (0 + "%");
+  myElement.style.right = (0 + "%");
+  myElement.style.top = (0 + "%");
+  console.log("Distance from right: " + distanceFromRight);
 });
