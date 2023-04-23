@@ -21,6 +21,10 @@ function clamp(min, num){
   return(num);
 }
 
+function refresh(){
+  hi.style.left = (pix+20)+"px";
+}
+
 document.addEventListener("wheel", function(event) {
   event.preventDefault(); // Prevents the default scrolling behavior
 
@@ -79,7 +83,7 @@ window.addEventListener("load", function() {
   hi.style.marginTop = (scrnHeight/2)-7 + "px";
   hi.style.marginBottom = 0;
   hi.style.margin = "20,20";
-  hi.style.left = (0 + "%");
+  hi.style.left = (20 + "px");
   hi.style.right = (0 + "%");
   hi.style.top = (0 + "%");
 
@@ -90,4 +94,5 @@ window.addEventListener("load", function() {
   console.log("percentage: " + percen);
   console.log("Width" + myElement.offsetWidth);
   console.log("pixels: " + pix);
+  refresh();
 });
