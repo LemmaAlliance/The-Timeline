@@ -32,7 +32,6 @@ body {
 #topLinks li a:hover {
     color: darkgreen;
     transition: all 250ms ease-out;
-    text-decoration: underline;
 }
 #topMenu .logo {
     float:left;
@@ -54,4 +53,7 @@ body {
   border: none; /* remove any default border */
   width: calc(100% - 40px);
 }
-  
+#Hi {
+    position: absolute;
+    color: white;
+}

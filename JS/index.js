@@ -2,15 +2,27 @@ let zoomFactor = 1;
 const scrnWidth = screen.width;
 const scrnHeight = window.innerHeight;
 const myElement = document.getElementById("my-element");
+const hi = document.getElementById("Hi");
 let rect = myElement.getBoundingClientRect();
 let distanceFromRight = document.documentElement.clientWidth - rect.right;
 let xPos = 0;
+let date1 = new Date("Jan 01 2000 00:00:00");
+let date2 = new Date();
+let date3 = new Date("Jan 28 2010 00:00:00");
+var dif = Math.abs(date1 - date2) / 1000;
+var dif2 = Math.abs(date1 - date3) / 1000;
+var percen = (((dif2-dif)/dif) * 100) + 100;
+var pix;
 
 function clamp(min, num){
   if(num < min){
     num = min;
   }
   return(num);
+}
+
+function refresh(){
+  hi.style.left = (pix+20)+"px";
 }
 
 document.addEventListener("wheel", function(event) {
@@ -53,6 +65,7 @@ window.addEventListener("keydown", function (e){
 
 window.addEventListener("load", function() {
   console.log("Page has finished loading");
+
   // Do something else here
   myElement.style.position = "absolute";
   myElement.style.width = scrnWidth;
@@ -64,4 +77,22 @@ window.addEventListener("load", function() {
   myElement.style.right = (0 + "%");
   myElement.style.top = (0 + "%");
   console.log("Distance from right: " + distanceFromRight);
+
+  hi.style.position = "absolute";
+  hi.style.width = scrnWidth;
+  hi.style.marginTop = (scrnHeight/2)-7 + "px";
+  hi.style.marginBottom = 0;
+  hi.style.margin = "20,20";
+  hi.style.left = (20 + "px");
+  hi.style.right = (0 + "%");
+  hi.style.top = (0 + "%");
+
+  pix = (percen/100) * myElement.offsetWidth;
+
+  console.log("diffrence: " + dif);
+  console.log("diffrence 2: " + dif2);
+  console.log("percentage: " + percen);
+  console.log("Width" + myElement.offsetWidth);
+  console.log("pixels: " + pix);
+  refresh();
 });
