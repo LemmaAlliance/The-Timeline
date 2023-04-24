@@ -1,5 +1,5 @@
 let zoomFactor = 1;
-const scrnWidth = window.innerWidth;
+const scrnWidth = screen.width;
 const scrnHeight = window.innerHeight;
 const myElement = document.getElementById("my-element");
 const hi = document.getElementById("Hi");
@@ -22,7 +22,7 @@ function clamp(min, num){
 }
 
 function refresh(){
-  hi.style.left = (percen)+"%";
+  hi.style.left = (pix+20)+"px";
 }
 
 document.addEventListener("wheel", function(event) {
@@ -39,12 +39,8 @@ document.addEventListener("wheel", function(event) {
 
   zoomFactor = clamp(1, zoomFactor);
 
-  myElement.style.margin = "20,20";
-
   // Set the scale transform on the element
-  myElement.style.width = ((scrnWidth*zoomFactor)-40)+"px";
-  console.log("Screen width + zoom factor: "+((scrnWidth*zoomFactor)-40));
-  refresh();
+  myElement.style.transform = `scaleX(${zoomFactor})`;
 }, { passive: false }); // Add the { passive: false } option
 
 window.addEventListener("keydown", function (e){
