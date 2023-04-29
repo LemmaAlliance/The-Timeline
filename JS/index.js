@@ -78,9 +78,12 @@ window.addEventListener("load", function() {
   myElement.style.right = (0 + "%");
   myElement.style.top = (0 + "%");
   console.log("Distance from right: " + distanceFromRight);
-  
-  dates.push({"date":new Date(items[0].id), "element":items[0]});
-  console.log("Date no.1: " + dates[0].date);
+
+  for (var i = 0; i < items.length; i++) {
+    dates.push({"date":new Date(items[i].id), "element":items[i]});
+    console.log(`Item ${i}'s date is: ${dates[i].date}`);
+  };
+  //for(let i = 0;)
 
   console.log("diffrence: " + dif);
   console.log("diffrence 2: " + dif2);
