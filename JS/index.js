@@ -90,18 +90,23 @@ window.addEventListener("load", function() {
 
     dates.push({"date":new Date(items[i].id), "element":items[i], "percentage":temp2});
     console.log(`Item ${i}'s date is: ${dates[i].date}, it's percentage is: ${dates[i].percentage}`);
+    
+    if(i != 0){
+      if(dates[i].percentage-(dates[i-1].percentage) < 1){
+        dates[i]["element"].style.visibility = "hidden";
+      }
+    };
   };
 
   //prepare items
   for(var i=0; i < dates.length; i++){
     (dates[i]["element"]).style.position = "relative";
-    (dates[i]["element"]).style.display = "inline";
+    (dates[i]["element"]).style.top = (-(15))+"px";
+    (dates[i]["element"]).style.display =  "inline";
   }
   //for(let i = 0;)
 
   console.log("diffrence: " + dif);
-  console.log("diffrence 2: " + dif2);
-  console.log("percentage: " + percen);
   console.log("Width" + myElement.offsetWidth);
   console.log("pixels: " + pix);
   refresh();
