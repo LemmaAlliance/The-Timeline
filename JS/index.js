@@ -79,9 +79,14 @@ window.addEventListener("load", function() {
   myElement.style.top = (0 + "%");
   console.log("Distance from right: " + distanceFromRight);
 
+  let temp;
+  let temp2;
   for (var i = 0; i < items.length; i++) {
-    dates.push({"date":new Date(items[i].id), "element":items[i]});
-    console.log(`Item ${i}'s date is: ${dates[i].date}`);
+    temp = Math.abs(date1 - new Date(items[i].id)) / 1000
+    temp2 = (((temp-dif)/dif) * 100) + 100;
+
+    dates.push({"date":new Date(items[i].id), "element":items[i], "percentage":temp2});
+    console.log(`Item ${i}'s date is: ${dates[i].date}, it's percentage is: ${dates[i].percentage}`);
   };
   //for(let i = 0;)
 
