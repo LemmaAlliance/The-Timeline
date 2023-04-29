@@ -8,10 +8,10 @@ let distanceFromRight = document.documentElement.clientWidth - rect.right;
 let xPos = 0;
 let date1 = new Date("Jan 01 2000 00:00:00");
 let date2 = new Date();
-let date3 = new Date("Jan 28 2010 00:00:00");
+let dates = [];
+let items;
 var dif = Math.abs(date1 - date2) / 1000;
-var dif2 = Math.abs(date1 - date3) / 1000;
-var percen = (((dif2-dif)/dif) * 100) + 100;
+//var percen = (((dif2-dif)/dif) * 100) + 100;
 var pix;
 
 function clamp(min, num){
@@ -39,7 +39,7 @@ document.addEventListener("wheel", function(event) {
   zoomFactor = clamp(1, zoomFactor);
 
   // Set the scale transform on the element
-  myElement.style.transform = `scaleX(${zoomFactor})`;
+  myElement.style.transform = `scaleX(${zoomFactor-20})`;
 }); // Add the { passive: false } option
 
 window.addEventListener("keydown", function (e){
@@ -59,15 +59,19 @@ window.addEventListener("keydown", function (e){
   console.log(xPos);
   rect = myElement.getBoundingClientRect();
   distanceFromRight = document.documentElement.clientWidth - rect.right;
+  for(var i=0; i < dates.length; i++){
+    (dates[i]["element"]).style.left = ((xPos + (dates[i].percentage)) + "%");
+  }
   console.log("Distance from right" + distanceFromRight)
 }, false);
 
 window.addEventListener("load", function() {
   console.log("Page has finished loading");
 
+  items = document.getElementsByClassName("item");
   // Do something else here
-  myElement.style.position = "absolute";
-  myElement.width = scrnWidth;
+  myElement.style.position = "relative";
+  myElement.width = scrnWidth-20;
   myElement.height = 3;
   console.log(scrnHeight/2);
   myElement.style.marginTop = (scrnHeight/2) + "px";
@@ -77,12 +81,32 @@ window.addEventListener("load", function() {
   myElement.style.right = (0 + "%");
   myElement.style.top = (0 + "%");
   console.log("Distance from right: " + distanceFromRight);
-  
-  pix = (percen/100) * myElement.offsetWidth;
+
+  let temp;
+  let temp2;
+  for (var i = 0; i < items.length; i++) {
+    temp = Math.abs(date1 - new Date(items[i].id)) / 1000
+    temp2 = (((temp-dif)/dif) * 100) + 100;
+
+    dates.push({"date":new Date(items[i].id), "element":items[i], "percentage":temp2});
+    console.log(`Item ${i}'s date is: ${dates[i].date}, it's percentage is: ${dates[i].percentage}`);
+    
+    if(i != 0){
+      if(dates[i].percentage-(dates[i-1].percentage) < 1){
+        dates[i]["element"].style.visibility = "hidden";
+      }
+    };
+  };
+
+  //prepare items
+  for(var i=0; i < dates.length; i++){
+    (dates[i]["element"]).style.position = "relative";
+    (dates[i]["element"]).style.top = (-(15))+"px";
+    (dates[i]["element"]).style.display =  "inline";
+  }
+  //for(let i = 0;)
 
   console.log("diffrence: " + dif);
-  console.log("diffrence 2: " + dif2);
-  console.log("percentage: " + percen);
   console.log("Width" + myElement.offsetWidth);
   console.log("pixels: " + pix);
   refresh();
