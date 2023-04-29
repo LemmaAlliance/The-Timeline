@@ -43,17 +43,3 @@ body {
 #topMenu.logo:hover {
     color: #4392f1;
 }
-#line {
-  position: relative;
-  padding: 0 20px; /* add padding to position the hr element 20 pixels from the left edge of the container */
-}
-#my-element {
-  height: 5px;  /*adjust the height of the <hr> element as desired */
-  background-color: rgba(0, 255, 13, 0.541); /* change the color to your desired color */
-  border: none; /* remove any default border */
-  width: calc(100% - 40px);
-}
-#Hi {
-    position: absolute;
-    color: white;
-}

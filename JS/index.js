@@ -22,7 +22,6 @@ function clamp(min, num){
 }
 
 function refresh(){
-  hi.style.left = (pix+20)+"px";
 }
 
 document.addEventListener("wheel", function(event) {
@@ -41,7 +40,7 @@ document.addEventListener("wheel", function(event) {
 
   // Set the scale transform on the element
   myElement.style.transform = `scaleX(${zoomFactor})`;
-}, { passive: false }); // Add the { passive: false } option
+}); // Add the { passive: false } option
 
 window.addEventListener("keydown", function (e){
   console.log(`You pressed ${e.key}`);
@@ -71,21 +70,10 @@ window.addEventListener("load", function() {
   myElement.style.width = scrnWidth;
   console.log(scrnHeight/2);
   myElement.style.marginTop = (scrnHeight/2) + "px";
-  myElement.style.marginBottom = 0;
-  myElement.style.margin = "20,20";
   myElement.style.left = (0 + "%");
   myElement.style.right = (0 + "%");
   myElement.style.top = (0 + "%");
   console.log("Distance from right: " + distanceFromRight);
-
-  hi.style.position = "absolute";
-  hi.style.width = scrnWidth;
-  hi.style.marginTop = (scrnHeight/2)-7 + "px";
-  hi.style.marginBottom = 0;
-  hi.style.margin = "20,20";
-  hi.style.left = (20 + "px");
-  hi.style.right = (0 + "%");
-  hi.style.top = (0 + "%");
 
   pix = (percen/100) * myElement.offsetWidth;
 
