@@ -9,9 +9,9 @@ let xPos = 0;
 let date1 = new Date("Jan 01 2000 00:00:00");
 let date2 = new Date();
 let dates = [];
+let items;
 var dif = Math.abs(date1 - date2) / 1000;
-var dif2 = Math.abs(date1 - date3) / 1000;
-var percen = (((dif2-dif)/dif) * 100) + 100;
+//var percen = (((dif2-dif)/dif) * 100) + 100;
 var pix;
 
 function clamp(min, num){
@@ -65,6 +65,7 @@ window.addEventListener("keydown", function (e){
 window.addEventListener("load", function() {
   console.log("Page has finished loading");
 
+  items = document.getElementsByClassName("item");
   // Do something else here
   myElement.style.position = "absolute";
   myElement.width = scrnWidth;
@@ -78,7 +79,8 @@ window.addEventListener("load", function() {
   myElement.style.top = (0 + "%");
   console.log("Distance from right: " + distanceFromRight);
   
-  dates.push
+  dates.push({"date":new Date(items[0].id), "element":items[0]});
+  console.log("Date no.1: " + dates[0].date);
 
   console.log("diffrence: " + dif);
   console.log("diffrence 2: " + dif2);
