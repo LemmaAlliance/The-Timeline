@@ -39,7 +39,7 @@ document.addEventListener("wheel", function(event) {
   zoomFactor = clamp(1, zoomFactor);
 
   // Set the scale transform on the element
-  myElement.style.transform = `scaleX(${zoomFactor})`;
+  myElement.style.transform = `scaleX(${zoomFactor-20})`;
 }); // Add the { passive: false } option
 
 window.addEventListener("keydown", function (e){
@@ -71,7 +71,7 @@ window.addEventListener("load", function() {
   items = document.getElementsByClassName("item");
   // Do something else here
   myElement.style.position = "relative";
-  myElement.width = scrnWidth;
+  myElement.width = scrnWidth-20;
   myElement.height = 3;
   console.log(scrnHeight/2);
   myElement.style.marginTop = (scrnHeight/2) + "px";
@@ -95,6 +95,7 @@ window.addEventListener("load", function() {
   //prepare items
   for(var i=0; i < dates.length; i++){
     (dates[i]["element"]).style.position = "relative";
+    (dates[i]["element"]).style.display = "inline";
   }
   //for(let i = 0;)
 
