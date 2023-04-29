@@ -67,14 +67,17 @@ window.addEventListener("load", function() {
 
   // Do something else here
   myElement.style.position = "absolute";
-  myElement.style.width = scrnWidth;
+  myElement.width = scrnWidth;
+  myElement.height = 3;
   console.log(scrnHeight/2);
   myElement.style.marginTop = (scrnHeight/2) + "px";
+  myElement.style.marginBottom = 0;
+  myElement.style.margin = "20,20";
   myElement.style.left = (0 + "%");
   myElement.style.right = (0 + "%");
   myElement.style.top = (0 + "%");
   console.log("Distance from right: " + distanceFromRight);
-
+  
   pix = (percen/100) * myElement.offsetWidth;
 
   console.log("diffrence: " + dif);
