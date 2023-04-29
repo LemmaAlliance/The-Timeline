@@ -8,7 +8,7 @@ let distanceFromRight = document.documentElement.clientWidth - rect.right;
 let xPos = 0;
 let date1 = new Date("Jan 01 2000 00:00:00");
 let date2 = new Date();
-let date3 = new Date("Jan 28 2010 00:00:00");
+let dates = [];
 var dif = Math.abs(date1 - date2) / 1000;
 var dif2 = Math.abs(date1 - date3) / 1000;
 var percen = (((dif2-dif)/dif) * 100) + 100;
@@ -78,7 +78,7 @@ window.addEventListener("load", function() {
   myElement.style.top = (0 + "%");
   console.log("Distance from right: " + distanceFromRight);
   
-  pix = (percen/100) * myElement.offsetWidth;
+  dates.push
 
   console.log("diffrence: " + dif);
   console.log("diffrence 2: " + dif2);
