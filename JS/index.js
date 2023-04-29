@@ -59,6 +59,9 @@ window.addEventListener("keydown", function (e){
   console.log(xPos);
   rect = myElement.getBoundingClientRect();
   distanceFromRight = document.documentElement.clientWidth - rect.right;
+  for(var i=0; i < dates.length; i++){
+    (dates[i]["element"]).style.left = ((xPos + (dates[i].percentage)) + "%");
+  }
   console.log("Distance from right" + distanceFromRight)
 }, false);
 
@@ -67,7 +70,7 @@ window.addEventListener("load", function() {
 
   items = document.getElementsByClassName("item");
   // Do something else here
-  myElement.style.position = "absolute";
+  myElement.style.position = "relative";
   myElement.width = scrnWidth;
   myElement.height = 3;
   console.log(scrnHeight/2);
@@ -88,6 +91,11 @@ window.addEventListener("load", function() {
     dates.push({"date":new Date(items[i].id), "element":items[i], "percentage":temp2});
     console.log(`Item ${i}'s date is: ${dates[i].date}, it's percentage is: ${dates[i].percentage}`);
   };
+
+  //prepare items
+  for(var i=0; i < dates.length; i++){
+    (dates[i]["element"]).style.position = "relative";
+  }
   //for(let i = 0;)
 
   console.log("diffrence: " + dif);
