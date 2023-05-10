@@ -71,8 +71,43 @@ window.addEventListener("load", function () {
   fetch('data/posts.json')
     .then(response => response.json())
     .then(data => {
-      console.log(data);
-      items = data.posts
+      items = data["posts"];
+      console.log(items);
+
+      let temp;
+      let temp2;
+      for (var i = 0; i < items.length; i++) {
+        temp = Math.abs(date1 - new Date(items[i].date)) / 1000
+        temp2 = (((temp - dif) / dif) * 100) + 100;
+        Object.assign(items[i], { 'element': document.createElement("div") });
+
+        dates.push({ "date": new Date(items[i].date), "element": items[i].element, "percentage": temp2 });
+        console.log(`Item ${i}'s date is: ${dates[i].date}, it's percentage is: ${dates[i].percentage}`);
+
+        if (i != 0) {
+          if (dates[i].percentage - (dates[i - 1].percentage) < 1) {
+            dates[i]["element"].style.visibility = "hidden";
+          }
+        };
+      };
+
+      //prepare items
+      for (var i = 0; i < dates.length; i++) {
+        (dates[i]["element"]).style.position = "relative";
+        (dates[i]["element"]).style.top = (-(15)) + "px";
+        (dates[i]["element"]).style.display = "inline";
+        myElement.appendChild(dates[i].element);
+      }
+      //for(let i = 0;)
+
+      for (var i = 0; i < dates.length; i++) {
+        (dates[i]["element"]).style.left = ((xPos + (dates[i].percentage)) + "%");
+      }
+
+      console.log("diffrence: " + dif);
+      console.log("Width" + myElement.offsetWidth);
+      console.log("pixels: " + pix);
+      refresh();
     })
     .catch(error => console.error(error));
 
@@ -89,38 +124,4 @@ window.addEventListener("load", function () {
   myElement.style.top = (0 + "%");
   console.log("Distance from right: " + distanceFromRight);
 
-  let temp;
-  let temp2;
-  for (var i = 0; i < items.length; i++) {
-    temp = Math.abs(date1 - new Date(items[i].date)) / 1000
-    temp2 = (((temp - dif) / dif) * 100) + 100;
-    Object.assign(items[i], {'element':document.createElement("div")});
-    document.myElement.appendChild(items[i].element);
-
-    dates.push({ "date": new Date(items[i].date), "element": items[i].element, "percentage": temp2 });
-    console.log(`Item ${i}'s date is: ${dates[i].date}, it's percentage is: ${dates[i].percentage}`);
-
-    if (i != 0) {
-      if (dates[i].percentage - (dates[i - 1].percentage) < 1) {
-        dates[i]["element"].style.visibility = "hidden";
-      }
-    };
-  };
-
-  //prepare items
-  for (var i = 0; i < dates.length; i++) {
-    (dates[i]["element"]).style.position = "relative";
-    (dates[i]["element"]).style.top = (-(15)) + "px";
-    (dates[i]["element"]).style.display = "inline";
-  }
-  //for(let i = 0;)
-
-  for (var i = 0; i < dates.length; i++) {
-    (dates[i]["element"]).style.left = ((xPos + (dates[i].percentage)) + "%");
-  }
-
-  console.log("diffrence: " + dif);
-  console.log("Width" + myElement.offsetWidth);
-  console.log("pixels: " + pix);
-  refresh();
 });
