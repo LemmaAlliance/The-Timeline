@@ -68,7 +68,14 @@ window.addEventListener("keydown", function (e) {
 window.addEventListener("load", function () {
   console.log("Page has finished loading");
 
-  items = document.getElementsByClassName("item");
+  fetch('data/posts.json')
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      items = data.posts
+    })
+    .catch(error => console.error(error));
+
   // Do something else here
   myElement.style.position = "relative";
   myElement.width = scrnWidth - 20;
@@ -85,10 +92,12 @@ window.addEventListener("load", function () {
   let temp;
   let temp2;
   for (var i = 0; i < items.length; i++) {
-    temp = Math.abs(date1 - new Date(items[i].id)) / 1000
+    temp = Math.abs(date1 - new Date(items[i].date)) / 1000
     temp2 = (((temp - dif) / dif) * 100) + 100;
+    Object.assign(items[i], {'element':document.createElement("div")});
+    document.myElement.appendChild(items[i].element);
 
-    dates.push({ "date": new Date(items[i].id), "element": items[i], "percentage": temp2 });
+    dates.push({ "date": new Date(items[i].date), "element": items[i].element, "percentage": temp2 });
     console.log(`Item ${i}'s date is: ${dates[i].date}, it's percentage is: ${dates[i].percentage}`);
 
     if (i != 0) {

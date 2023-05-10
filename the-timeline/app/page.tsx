@@ -1,7 +1,6 @@
 const data = {
   'lineImg':'./Img/line.png'
 }
-
 export default function Profile() {
   return (
     <>
