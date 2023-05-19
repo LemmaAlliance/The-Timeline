@@ -40,7 +40,7 @@ document.addEventListener("wheel", function (event) {
 
   // Set the scale transform on the element
   myElement.style.transform = `scaleX(${zoomFactor - 20})`;
-}); // Add the { passive: false } option
+}, {passive: false}); // Add the { passive: false } option
 
 window.addEventListener("keydown", function (e) {
   console.log(`You pressed ${e.key}`);
@@ -102,6 +102,7 @@ window.addEventListener("load", function () {
 
       for (var i = 0; i < dates.length; i++) {
         (dates[i]["element"]).style.left = ((xPos + (dates[i].percentage)) + "%");
+        console.log("put them where they're supposed to be")
       }
 
       console.log("diffrence: " + dif);
